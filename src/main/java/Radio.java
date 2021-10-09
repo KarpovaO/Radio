@@ -60,8 +60,7 @@ public class Radio {
             return currentVolume;
 
 
-        }
-        return 0;
+        } return 0;
     }
 
     public int PrevVolume() {
