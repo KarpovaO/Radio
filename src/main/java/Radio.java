@@ -35,43 +35,41 @@ public class Radio {
     }
 
 
-    public void NextStation() {
-
-
+    public void nextStation() {
         if (currentStation < maxStation) {
             currentStation = currentStation + 1;
-        } else currentStation = 0;
+        } else {
+            currentStation = 0;
+        }
 
 
     }
 
-    public int PrevStation() {
+    public int prevStation() {
         if (currentStation == 0) {
             currentStation = maxStation;
-        } else currentStation = currentStation - 1;
+        } else {
+            currentStation = currentStation - 1;
+        }
         return currentStation;
     }
 
 
-    public int NextVolume() {
-
+    public int nextVolume() {
         if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
             return currentVolume;
-
-
-        } return 0;
+        }
+        return 0;
     }
 
-    public int PrevVolume() {
-
+    public int prevVolume() {
         if (currentVolume == 0) {
             return 0;
-        } else
+        } else {
             currentVolume = currentVolume - 1;
+        }
         return currentVolume;
-
-
     }
 
 }
