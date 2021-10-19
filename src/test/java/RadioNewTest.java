@@ -4,12 +4,21 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RadioTest {
-    //private Radio rad = new Radio(100);
-    private Radio rad = new Radio();
+public class RadioNewTest {
+    private Radio rad = new Radio(100);
+    //private Radio rad = new Radio();
+
 
     @ParameterizedTest
-    @CsvSource(value = {"'TestCurrentStation' ,8,8", "'TestCurrentStation negative', -1,0 ", "'TestCurrentStation more Max', 10,0"})
+    @CsvSource(value = {"'Test Max Station Number' ,99,99"})
+    public void testMaxStationNumber(String testName, int setCurrentStation, int expected) {
+        rad.setMaxStationNumber(setCurrentStation);
+        int actual = rad.getMaxStationNumber();
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"'TestCurrentStation' ,99,99", "'TestCurrentStation negative', -1,0 ", "'TestCurrentStation more Max', 100,0 "})
     public void testCurrentStation(String testName, int setCurrentStation, int expected) {
         rad.setCurrentStation(setCurrentStation);
         int actual = rad.getCurrentStation();
@@ -25,7 +34,7 @@ public class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"'TestCurrentStation ',8,9", "'TestCurrentStation more Max ',9,0"})
+    @CsvSource(value = {"'TestCurrentStation ',98,99", "'TestCurrentStation Max ',99,0"})
     public void testNextCurrentStation(String testName, int setCurrentStation, int expected) {
         rad.setCurrentStation(setCurrentStation);
         rad.nextStation();
@@ -34,7 +43,7 @@ public class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"'TestCurrentStation 0',0,9", "'TestCurrentStation Max',9,8"})
+    @CsvSource(value = {"'TestCurrentStation 0',0,99", "'TestCurrentStation Max',99,98"})
     public void testPrevCurrentStation(String testName, int setCurrentStation, int expected) {
         rad.setCurrentStation(setCurrentStation);
         rad.prevStation();
@@ -60,25 +69,6 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"'Test Max Station Number' ,99,99"})
-    public void testMaxStationNumber(String testName, int setCurrentStation, int expected) {
-        rad.setMaxStationNumber(setCurrentStation);
-        int actual = rad.getMaxStationNumber();
-        assertEquals(expected, actual);
-    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
